@@ -1,40 +1,26 @@
-#registrar {
-    margin: 10px;
-    padding: 10px;
-    font-style: bold;
-    background: rgb(114, 114, 255);
-    color: white;
-    border-radius: 15px;
-    transition: all 0.6s ease;
-
-    &:hover {
-        background: rgb(72, 72, 172);
-        border: solid 1px;
-        border-color: rgba(167, 167, 255, 0.925);
-        box-shadow: inset 0px 0px 10px 0px rgba(167, 167, 255, 0.925);
-        scale: 1.13;
-    }
-}
-
-.iniciar-sesion {
-    margin: 10px;
-    padding: 10px;
-    font-style: bold;
-    background: rgb(114, 114, 255);
-    color: white;
-    border-radius: 15px;
-    transition: all 0.6s ease;
-
-    &:hover {
-        background: rgb(72, 72, 172);
-        border: solid 1px;
-        border-color: rgba(167, 167, 255, 0.925);
-        box-shadow: inset 0px 0px 10px 0px rgba(167, 167, 255, 0.925);
-        scale: 1.13;
-    }
-}
-
 .home {
+    background: url(https://images.unsplash.com/photo-1542690970-7310221dbe09?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    opacity: 0.97;
+}
+
+@keyframes bajando {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.Info {
     text-align: center;
     display: flex;
     justify-content: center;
@@ -42,64 +28,28 @@
     flex-direction: column;
     padding: 20px;
     height: 100vh;
-    width: 100%;
-    background: linear-gradient(180deg, rgb(60, 0, 170), rgb(82, 40, 161), rgba(111, 86, 156, 0.884));
+    width: 50%;
+    background: white;
 }
 
-.home p {
-    animation: bajando 1.2s ease;
+.contenido_info {
+    animation: bajando 2s ease;
     padding: 10px;
     font-size: 18px;
-    color: white;
-    text-shadow: 3px 5px 2px rgba(0, 0, 0, 0.6);
+    color: rgb(0, 0, 0);
+    text-shadow: 3px 5px 2px rgba(189, 189, 189, 0.6);
 }
 
-@keyframes bajando {
-    0% {
-        transform: translateY(-30px);
-        opacity: 0;
-    }
-
-    50% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    75% {
-        transform: translateY(-8px);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
-}
-
-.home h2 {
-    animation: bajando 1.2s ease;
+.Info h2 {
+    animation: bajando 2s ease;
     padding: 10px;
     font-size: 35px;
-    color: white;
-    text-shadow: 3px 5px 2px rgba(0, 0, 0, 0.6);
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        scale: 0;
-    }
-
-    50% {
-        scale: 1.1;
-    }
-
-    100% {
-        opacity: 1;
-        scale: 1;
-    }
+    color: rgb(0, 0, 0);
+    text-shadow: 3px 5px 2px rgba(189, 189, 189, 0.6);
 }
 
 .home__container {
-    animation: fadeIn 1.5s ease;
+    animation: bajando 2s ease;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,18 +57,138 @@
     padding: 20px;
     margin: 10px;
     border-radius: 15px;
-    border: solid 2px rgba(255, 255, 255, 0.733);
-    will-change: transform;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    transition: all 0.6s ease;
+}
 
-    &:hover {
-        scale: 1.1;
-        box-shadow: inset 0 5px 20px 8px rgb(99, 29, 230);
+.titulo_acciones {
+    padding: 10px;
+    font-size: 20px;
+}
+
+
+/* Botn de resgistro */
+
+#registrar {
+    position: relative;
+    margin: 10px;
+    padding: 10px;
+    font-style: italic;
+    border-radius: 15px;
+    border: solid 1px black;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        display: block;
+        border-radius: 5px;
+        border: 0;
+        background: black;
+        width: 100%;
+        height: 0%;
+        z-index: 0;
+        transition: all 0.2s ease;
+    }
+
+    &::before {
+        right: 0;
+        /* Se llena desde arriba */
+    }
+
+    &::after {
+        left: 0;
+    }
+
+    &:hover::before,
+    &:hover::after {
+        height: 100%;
+        border: 0;
+        background: black;
+    }
+
+    &:active {
+        transform: scale(0.95);
+        border: 0;
+    }
+
+    &:hover .text_reg {
+        color: white;
+    }
+
+    &:active .text_reg {
+        transform: scale(0.90);
     }
 }
 
-.home__container p {
+.text_reg {
+    position: relative;
+    color: rgb(0, 0, 0);
+    padding: 2px;
+    font-size: 19px;
+    transition: all 0.1s;
+    z-index: 2;
+}
+
+
+/* Botn de iniciar sesion */
+
+.iniciar-sesion {
+    position: relative;
+    margin: 10px;
     padding: 10px;
+    font-style: italic;
+    border-radius: 15px;
+    border: solid 1px black;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+
+    &::before{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: block;
+        border-radius: 5px;
+        border: 0;
+        background: black;
+        width: 100%;
+        height: 0%;
+        z-index: 0;
+        transition: all 0.2s ease;
+    }
+
+
+    &:hover::before {
+        height: 100%;
+        border: 0;
+        background: black;
+    }
+
+    &:active {
+        transform: scale(0.95);
+        border: 0;
+    }
+
+    &:hover .text_sesion {
+        color: white;
+    }
+
+    &:active .text_sesion {
+        transform: scale(0.90);
+    }
+}
+
+.text_sesion {
+    position: relative;
+    color: rgb(0, 0, 0);
+    padding: 2px;
+    font-size: 19px;
+    transition: all 0.1s;
+    z-index: 2;
 }
